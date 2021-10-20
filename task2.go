@@ -22,18 +22,18 @@ func CheckPrime(number int) {
 		}
 	}
 }
-
-func isPalindrome(str string) bool {
-	reversedStr := ""
-	for i := len(str) - 1; i >= 0; i-- {
-		reversedStr += string(str[i])
+func Reverse(s string) (result string) {
+	for _, v := range s {
+		result = string(v) + result
 	}
-	for i := range str {
-		if str[i] != reversedStr[i] {
-			return false
-		}
+	return
+}
+func isPalindrome(str string) {
+	if str == Reverse(str) {
+		fmt.Printf("True \n")
+	} else {
+		fmt.Printf("False\n")
 	}
-	return true
 }
 
 func PlayWithAsterisk(rows int) {
@@ -75,6 +75,12 @@ func Perkalian(n int) {
 		fmt.Printf(tabel)
 	}
 }
+
+func Exponent(i float64, j float64) {
+	exp := math.Pow(i, j)
+	text := fmt.Sprintf(" %v \n", exp)
+	fmt.Println(text)
+}
 func main() {
 
 	// Task hitung Luas Permukaan Tabung
@@ -96,17 +102,8 @@ func main() {
 	var Luas float64 = 2 * Pi * radius * (radius + tinggi)
 	fmt.Println(Luas)
 
-	// Problem Bilangan Faktor
-	var bilanganFaktor int
-	fmt.Print("Masukkan Bilangan yang ingin di Faktorkan: ")
-	fmt.Scan(&bilanganFaktor)
-	for i := 1; i < bilanganFaktor; i++ {
-		if bilanganFaktor%i == 0 {
-			fmt.Println(i)
-		}
-	}
 	// Probrem Grade Nilai
-	var studentScore int = 40
+	var studentScore int = 80
 	if studentScore >= 80 && studentScore <= 100 {
 		fmt.Println("A")
 	} else if studentScore <= 79 && studentScore >= 65 {
@@ -120,15 +117,38 @@ func main() {
 	} else {
 		fmt.Println("Nilai Invalid")
 	}
-	// Exponent
-	var bilanganPertama float64
-	var bilanganPangkat float64
-	fmt.Scan("%d", bilanganPertama)
-	fmt.Scan("%d", bilanganPangkat)
-	var exp = math.Pow(bilanganPertama, bilanganPangkat)
 
-	CheckPrime(5)
+	// Problem Bilangan Faktor
+	var bilanganFaktor int
+	fmt.Print("Masukkan Bilangan yang ingin di Faktorkan: ")
+	fmt.Scan(&bilanganFaktor)
+	for i := 1; i < bilanganFaktor; i++ {
+		if bilanganFaktor%i == 0 {
+			fmt.Println(i)
+		}
+	}
+
+	// Check bilangan Prima
+	CheckPrime(11)
+	CheckPrime(13)
+	CheckPrime(17)
+	CheckPrime(20)
+	CheckPrime(35)
+
+	// Check Palindrome
+	isPalindrome("civic")
+	isPalindrome("katak")
+	isPalindrome("kasur rusak")
+	isPalindrome("mistar")
+	isPalindrome("lion")
+
+	// Exponent
+	Exponent(2, 3)
+	Exponent(5, 3)
+	Exponent(10, 2)
+	Exponent(2, 5)
+	Exponent(7, 3)
+
 	PlayWithAsterisk(5)
-	fmt.Println(exp)
-	Perkalian(10)
+	Perkalian(9)
 }
